@@ -4,9 +4,12 @@ import React from "react";
 
 const App = () => {
   return (
-    <div>
-      <div className="header">
-        <h3 className="header__title">Odd Positive Average Calculator!</h3>
+    <div className="app">
+      <div className="app__header">
+        <h3 className="app__header__title">Odd Positive Average Calculator!</h3>
+      </div>
+      <div className="app__container">
+        <div className="app__container__input"></div>
       </div>
     </div>
   );
