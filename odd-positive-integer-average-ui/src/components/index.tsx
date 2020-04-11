@@ -9,7 +9,11 @@ const App = () => {
         <h3 className="app__header__title">Odd Positive Average Calculator!</h3>
       </div>
       <div className="app__container">
-        <div className="app__container__input"></div>
+        <div className="app__container__input">
+          <div className="app__container__input__form">
+            <form action="">// Form work in here</form>
+          </div>
+        </div>
       </div>
     </div>
   );
