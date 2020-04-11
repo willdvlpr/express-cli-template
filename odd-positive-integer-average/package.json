@@ -1,0 +1,58 @@
+{
+  "name": "odd-positive-integer-average",
+  "version": "0.0.0",
+  "description": "boilerplate project setup for students to use",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch '/src/**/*.ts' --exec \"ts-node\" src/index.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CS-BTurner/odd-positive-integer-average.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Typescript"
+  ],
+  "author": "Bradley Turner <bradley.turner@cloudsense.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CS-BTurner/odd-positive-integer-average/issues"
+  },
+  "homepage": "https://github.com/CS-BTurner/odd-positive-integer-average#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.3",
+    "@types/node": "^13.9.8",
+    "@types/supertest": "^2.0.8",
+    "jest": "^25.2.4",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2",
+    "ts-jest": "^25.3.0",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/jest": "^25.2.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**.spec.ts"
+    ]
+  }
+}
