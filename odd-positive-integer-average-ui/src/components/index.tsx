@@ -10,7 +10,9 @@ const App = () => {
       </div>
       <div className="app__container">
         <div className="app__container__input">
-          <form action="">// Form work in here</form>
+          <form className="app__container__input__form" action="">
+            // Form work in here
+          </form>
         </div>
       </div>
     </div>
