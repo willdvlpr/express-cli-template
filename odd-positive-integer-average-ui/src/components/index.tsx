@@ -1,7 +1,15 @@
-import React from 'react';
+import React from "react";
 
 // The main application file.
 
-export default function App() {
-  return <div>Hello World!</div>;
-}
+const App = () => {
+  return (
+    <div>
+      <div className="header">
+        <h3 className="header__title">Odd Positive Average Calculator!</h3>
+      </div>
+    </div>
+  );
+};
+
+export default App;

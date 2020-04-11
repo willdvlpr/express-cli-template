@@ -14,7 +14,7 @@ axios({
   .then((res: any) => {
     console.log("Average of all positive integers: " + res.data.average);
   })
-  .catch((err) => {
+  .catch((err: any) => {
     if (err.response.status == 400) {
       console.log("No odd positive integers were supplied.");
     }
