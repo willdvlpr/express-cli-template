@@ -3,11 +3,9 @@
 var axios = require("axios");
 
 export const clientResponse = () => {
-  console.log("making request");
-
   axios
     .get("/odd-positive-average")
-    .then((response) => {
+    .then((response: any) => {
       console.log(`Average of all positive integers (GET): ${response.data}`);
     })
     .catch((err: any) => {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import clientRequest from "../util/index";
 import clientResponse from "../util/get";
-import axios from "axios";
 
 interface Props {}
 interface Data {
@@ -37,7 +36,7 @@ export default class Counter extends Component<Props, Data> {
           placeholder="Input Data"
         />
         <button onClick={this.onClick}>Submit Data</button>
-        <button onClick={this.onHandle}>Show data in console</button>
+        <button onClick={this.onHandle}>Get Average of Data</button>
 
         {/* <div><h2>Average: {clientResponse()}</h2></div> */}
       </div>
