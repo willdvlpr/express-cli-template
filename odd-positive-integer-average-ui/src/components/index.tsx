@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import clientRequest from "../util/index";
 import clientResponse from "../util/get";
+import axios from "axios";
 
 interface Props {}
 interface Data {
@@ -21,7 +22,18 @@ export default class Counter extends Component<Props, Data> {
   };
 
   onHandle = (e: any) => {
-    clientResponse();
+    this.getData();
+  };
+
+  getData = () => {
+    axios
+      .get("/odd-positive-average")
+      .then((response: any) => {
+        console.log(`Average of all positive integers (GET): ${response.data}`);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
   };
 
   render() {
