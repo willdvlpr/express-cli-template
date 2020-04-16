@@ -1,6 +1,4 @@
 import express, { Application, Request, Response } from "express";
-import session from "express-session";
-
 import { averageOddPositiveIntegers } from "./util";
 
 const app: Application = express();
@@ -8,23 +6,21 @@ const app: Application = express();
 app.set("json spaces", 2);
 
 app.use(express.json());
-app.use(
-  session({
-    secret: "secret-key",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
 
+// Store data here instead of express session overhead
+let respondData: string;
+
+// Get request is for TSX GUI
 app.get("/odd-positive-average", (req: Request, res: Response) => {
-  res.send(req.session.avg.toString());
+  res.send(respondData);
 });
 
+// Shared Post request for CLI and GUI, returns average of user data array
 app.post("/odd-positive-average", (req: Request, res: Response) => {
   res.set("Content-Type", "application/json");
 
+  // Get data from body request
   const data: number[] = req.body;
-  req.session.userData = req.body;
 
   const checkInput = (data: number[]): boolean => {
     var flag: boolean = false;
@@ -41,7 +37,8 @@ app.post("/odd-positive-average", (req: Request, res: Response) => {
     res.status(400).json({ message: "Array should only be integers" });
   } else {
     const avg: number = averageOddPositiveIntegers(data);
-    req.session.avg = avg;
+    respondData = avg.toString();
+    // req.session.avg = avg;
     res.status(200).json({ average: avg });
   }
 });
