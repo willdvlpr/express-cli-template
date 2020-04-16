@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import clientRequest from "../util/index";
-import clientResponse from "../util/get";
 import axios from "axios";
 
 interface Props {}
 interface Data {
   userData: string;
+  userAverage: number;
 }
 
 export default class Counter extends Component<Props, Data> {
   state: Data = {
     userData: "",
+    userAverage: 0,
   };
 
   onChange = (e: any) => {
@@ -18,24 +19,27 @@ export default class Counter extends Component<Props, Data> {
   };
 
   onClick = (e: any) => {
-    let data = clientRequest(this.state.userData);
-    console.log(data);
-    <h1>{data}</h1>;
+    clientRequest(this.state.userData);
   };
 
   onHandle = (e: any) => {
-    clientResponse();
+    this.getData();
   };
 
   getData = () => {
     axios
       .get("/odd-positive-average")
       .then((response: any) => {
-        console.log(`Average of all positive integers (GET): ${response.data}`);
+        this.setData(Number(response.data));
       })
       .catch((err: any) => {
         console.log(err);
       });
+  };
+
+  setData = (average: number) => {
+    this.setState({ userAverage: average });
+    console.log(this.state.userAverage);
   };
 
   render() {
@@ -51,8 +55,9 @@ export default class Counter extends Component<Props, Data> {
         />
         <button onClick={this.onClick}>Submit Data</button>
         <button onClick={this.onHandle}>Get Average of Data</button>
-
-        {/* <div><h2>Average: {clientResponse()}</h2></div> */}
+        <div className="display__data">
+          <h3>Average is {this.state.userAverage}</h3>
+        </div>
       </div>
     );
   }

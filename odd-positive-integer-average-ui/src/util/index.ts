@@ -2,23 +2,21 @@
 
 var axios = require("axios");
 
-const clientRequest = (userData) => {
+const clientRequest = (userData: any) => {
+  // split input string and map to numbers in new array of user data
   const sendData: number[] = userData.split(",").map(Number);
-  return axios({
+  // Post request to server port 5001
+  axios({
     method: "POST",
     url: "/odd-positive-average",
     data: sendData,
   })
     .then((res: any) => {
       console.log(`Average of all positive integers: ${res.data.average}`);
-      return showOutput(res.data.average);
     })
     .catch((err: any) => {
-      console.log(err + "No odd positive integers were supplied.");
+      console.log(err + " No odd positive integers were supplied.");
     });
 };
 
-const showOutput = (avgData) => {
-  return avgData;
-};
 export default clientRequest;
