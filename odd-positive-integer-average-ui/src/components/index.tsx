@@ -18,11 +18,13 @@ export default class Counter extends Component<Props, Data> {
   };
 
   onClick = (e: any) => {
-    clientRequest(this.state.userData);
+    let data = clientRequest(this.state.userData);
+    console.log(data);
+    <h1>{data}</h1>;
   };
 
   onHandle = (e: any) => {
-    this.getData();
+    clientResponse();
   };
 
   getData = () => {
