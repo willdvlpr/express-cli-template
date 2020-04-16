@@ -13,7 +13,7 @@ const App: React.FC = () => {
         value={userData}
         onChange={(e) => setData(e.target.value)}
       />
-      <button onClick={(e) => clientRequest(userData)}>Submit Data</button>
+      <button onClick={() => clientRequest(userData)}>Submit Data</button>
     </div>
   );
 };
