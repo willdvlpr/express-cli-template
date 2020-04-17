@@ -15,7 +15,9 @@ const clientRequest = (userData: any) => {
       console.log(`Average of all positive integers: ${res.data.average}`);
     })
     .catch((err: any) => {
-      console.log(err + " No odd positive integers were supplied.");
+      if (err.response.status === 400) {
+        console.log(err + " No odd positive integers were supplied.");
+      }
     });
 };
 
