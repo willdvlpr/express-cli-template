@@ -7,6 +7,11 @@ app.set("json spaces", 2);
 
 app.use(express.json());
 
+// Test endpoint
+app.get("/test", async (req: Request, res: Response) => {
+  res.json({ message: "pass!" });
+});
+
 // Store data here instead of express session overhead
 let respondData: string;
 
