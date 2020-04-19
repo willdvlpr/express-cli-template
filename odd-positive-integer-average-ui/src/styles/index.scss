@@ -2,10 +2,12 @@ $test1: 2px solid red;
 $test2: 2px solid blue;
 $font-stack: "Montserrat", Helvetica, sans-serif;
 $primary-color: #333;
+$button-color: #9c9c9c;
 
 body {
   font-family: $font-stack;
   color: $primary-color;
+  background-color: #333;
 }
 
 .main {
@@ -14,8 +16,6 @@ body {
   margin-left: 20%;
   width: 60%;
   height: 500px;
-
-  border: $test1;
 }
 
 .main__container {
@@ -24,7 +24,8 @@ body {
   height: calc(100% - 3rem);
   padding-top: 3rem;
   background-color: #f4f7fb;
-  border: $test2;
+  border: 1px solid #333;
+  border-radius: 10px;
 }
 
 .main__container__heading {
@@ -32,18 +33,33 @@ body {
 }
 
 .main__container__input {
+  position: relative;
 }
 
 .user-input {
+  width: 20%;
+  height: 28px;
+  background-color: #d4d4d4;
+  border: none;
+  color: #333;
+  text-align: center;
+  font-size: 18px;
 }
 
 .main__container__data {
+  position: relative;
+  margin-top: 2rem;
+  margin-left: 40%;
+  height: 60px;
+  width: 20%;
+  display: grid;
 }
 
 .submit-data {
-}
-
-.get-data {
+  background-color: $button-color;
+  color: #d4d4d4;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .main__container__display {
@@ -51,4 +67,5 @@ body {
 .main__container__display__data {
 }
 .main__container__display__error {
+  color: red;
 }

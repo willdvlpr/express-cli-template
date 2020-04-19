@@ -6,6 +6,7 @@ const clientRequest = (userData: any) => {
   // split input string and map to numbers in new array of user data
   const sendData: number[] = userData.split(",").map(Number);
   // Post request to server port 5001
+  var strr: string[] = [""];
   axios({
     method: "POST",
     url: "/odd-positive-average",
@@ -16,7 +17,9 @@ const clientRequest = (userData: any) => {
     })
     .catch((err: any) => {
       if (err.response.status === 400) {
-        console.log(err + " No odd positive integers were supplied.");
+        alert(err.response.data.message);
+
+        console.log(err.response.data.message);
       }
     });
 };
