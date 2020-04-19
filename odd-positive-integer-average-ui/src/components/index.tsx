@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import clientRequest from "../util/index";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import Request from "./Request";
 import "../styles/index.scss";
 
 const App: React.FC = () => {
-  const [userAverage, setAverage] = useState("");
   const [userData, setData] = useState("");
-  const [error, setError] = useState("");
   return (
     <div className="main">
       <div className="main__container">
         <div>
           <h3 className="main__container__heading">
-            Input your data separated by comma (',')
+            Input Your Data > Get The Average
           </h3>
         </div>
         <div className="main__container__input">
@@ -21,38 +18,11 @@ const App: React.FC = () => {
             type="text"
             value={userData}
             onChange={(e) => setData(e.target.value)}
-            placeholder="Input data here"
+            placeholder="e.g. 1,2,3,4,5"
           />
         </div>
-        <div className="main__container__data">
-          <button
-            className="submit-data"
-            onClick={() => {
-              const sendData: number[] = userData.split(",").map(Number);
-              axios({
-                method: "POST",
-                url: "/odd-positive-average",
-                data: sendData,
-              })
-                .then((res: any) => {
-                  setAverage(res.data.average);
-                  setError("");
-                })
-                .catch((err: any) => {
-                  if (err.response.status === 400) {
-                    setError(err.response.data.message);
-                  }
-                });
-            }}
-          >
-            Submit Data
-          </button>
-        </div>
-        <div className="main__container__display">
-          <div className="main__container__display__data">
-            <h4>Average is: {userAverage}</h4>
-          </div>
-          <div className="main__container__display__error">{error}</div>
+        <div className="main__container__request">
+          <Request userData={userData} />
         </div>
       </div>
     </div>
