@@ -46,8 +46,15 @@ app.post("/odd-positive-average", (req: Request, res: Response) => {
   } else {
     // else find average and respond with 200 status
     const avg: number = averageOddPositiveIntegers(data);
-    respondData = avg.toString();
-    res.status(200).json({ average: avg });
+    if (avg === 0) {
+      respondData = avg.toString();
+      res.status(400).json({
+        message: "Your input array contained no odd, positive values",
+      });
+    } else {
+      respondData = avg.toString();
+      res.status(200).json({ average: avg });
+    }
   }
 });
 

@@ -1,0 +1,54 @@
+$test1: 2px solid red;
+$test2: 2px solid blue;
+$font-stack: "Montserrat", Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font-family: $font-stack;
+  color: $primary-color;
+}
+
+.main {
+  position: absolute;
+  margin-top: 2rem;
+  margin-left: 20%;
+  width: 60%;
+  height: 500px;
+
+  border: $test1;
+}
+
+.main__container {
+  position: relative;
+  text-align: center;
+  height: calc(100% - 3rem);
+  padding-top: 3rem;
+  background-color: #f4f7fb;
+  border: $test2;
+}
+
+.main__container__heading {
+  font-size: 30px;
+}
+
+.main__container__input {
+}
+
+.user-input {
+}
+
+.main__container__data {
+}
+
+.submit-data {
+}
+
+.get-data {
+}
+
+.main__container__display {
+}
+.main__container__display__data {
+}
+.main__container__display__error {
+}

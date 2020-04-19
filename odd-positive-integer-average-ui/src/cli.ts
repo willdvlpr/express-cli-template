@@ -3,8 +3,8 @@ var axios = require("axios");
 // store input localhost path
 const path = process.argv[2];
 const array = process.argv[3];
-// parse input string as JSON object and set as array of type 'number'
-const arr_data: number[] = JSON.parse(process.argv[3]);
+
+const arr_data: number[] = array.split(",").map(Number);
 
 axios({
   method: "POST",
@@ -12,10 +12,10 @@ axios({
   data: arr_data,
 })
   .then((res: any) => {
-    console.log("Average of all positive integers: " + res.data.average);
+    console.log("Average of all odd positive integers: " + res.data.average);
   })
   .catch((err: any) => {
     if (err.response.status == 400) {
-      console.log("No odd positive integers were supplied.");
+      console.log(err.response.data.message);
     }
   });
