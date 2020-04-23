@@ -3,6 +3,7 @@ import Request from "./Request";
 import "../styles/index.scss";
 
 const App: React.FC = () => {
+  // State for user entered data to pass as props to Request component
   const [userData, setData] = useState("");
   return (
     <div className="main">
