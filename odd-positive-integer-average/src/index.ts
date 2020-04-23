@@ -7,19 +7,6 @@ app.set("json spaces", 2);
 
 app.use(express.json());
 
-// Test endpoint
-app.get("/test", async (req: Request, res: Response) => {
-  res.json({ message: "pass!" });
-});
-
-// Store data here instead of express session overhead
-let respondData: string;
-
-// Get request is for TSX GUI
-app.get("/odd-positive-average", (req: Request, res: Response) => {
-  res.send(respondData);
-});
-
 // Shared Post request for CLI and GUI, returns average of user data array
 app.post("/odd-positive-average", (req: Request, res: Response) => {
   res.set("Content-Type", "application/json");
@@ -47,13 +34,11 @@ app.post("/odd-positive-average", (req: Request, res: Response) => {
     // else find average and respond with 200 status
     const avg: number = averageOddPositiveIntegers(data);
     if (avg === 0) {
-      respondData = avg.toString();
       res.status(400).json({
         message: "Your input array contained no odd, positive values",
       });
     } else {
-      respondData = avg.toString();
-      res.status(200).json({ average: avg });
+      res.status(200).json({ average: avg.toString() });
     }
   }
 });
